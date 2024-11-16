@@ -1,0 +1,8 @@
+- Arrays
+- Declaration, initialization of arrays
+- Operations on an array (fill, print, find max, min, copy etc.)
+- Enhanced for loop (“for-each”)
+- How memory works (stack vs heap memory)
+- Two and more dimensional arrays
+- Practice in one dimensional arrays
+- Practice in two dimensional arrays
