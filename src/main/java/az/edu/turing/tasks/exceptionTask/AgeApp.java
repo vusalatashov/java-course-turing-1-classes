@@ -8,7 +8,6 @@ public class AgeApp {
 
         AgeManager ageManager = new AgeManager(MAX_AGES);
         int count = ageManager.collectAges();
-
         if (count == 0) {
             System.out.println("No ages were entered.");
         } else {
