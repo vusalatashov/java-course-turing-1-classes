@@ -10,15 +10,23 @@ public class PostgresUserDao implements UserDao {
     @Override
     public void save(UserEntity userEntity) {
         String sql = "INSERT INTO users ( username, password) VALUES (?, ?)";
-        try (Connection con = PostgresConnection.getConnect();
-             PreparedStatement stmt = con.prepareStatement(sql)) {
+        Connection con = null;
+        try {con = PostgresConnection.getConnect();
+             PreparedStatement stmt = con.prepareStatement(sql) ;
+            con.setAutoCommit(false);
+
             stmt.setString(1, userEntity.getUsername());
             stmt.setString(2, userEntity.getPassword());
             int num=stmt.executeUpdate();
             System.out.println(num);
             System.out.println("User saved");
-        } catch (
-                SQLException e) {
+            con.close();
+        } catch (SQLException e) {
+            try {
+                con.rollback();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
             e.printStackTrace();
         }
     }
@@ -28,16 +36,8 @@ public class PostgresUserDao implements UserDao {
         List<UserEntity> userEntities = new ArrayList<>();
         String sql = "SELECT * FROM users";
         try (Connection con = PostgresConnection.getConnect();
-             Statement stmt = con.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                long id = rs.getLong("id");
-                String username = rs.getString("username");
-                String password = rs.getString("password");
-                UserEntity userEntity = new UserEntity(id, username, password);
-                userEntities.add(userEntity);
-            }
-
+             ResultSet rs = con.createStatement().executeQuery(sql)) {
+            while (rs.next()) userEntities.add( new UserEntity( rs.getLong("id"), rs.getString("username"), rs.getString("password")));
         } catch (SQLException e) {
             e.printStackTrace();
         }

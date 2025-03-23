@@ -15,6 +15,7 @@ public class UserController {
     public void save(UserEntity userEntity) {
         userService.save(userEntity);
     }
+
     public List<UserEntity> findAll() {
         return userService.findAll();
     }

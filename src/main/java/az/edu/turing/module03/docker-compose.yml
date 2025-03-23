@@ -1,0 +1,27 @@
+version: '3.3'
+
+services:
+
+  db-postgres:
+    container_name: db-postgre-course
+    image: postgres
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+  course-app:
+    stdin_open: true
+    tty: true
+    container_name: course-app
+    image: course-app
+    ports:
+      - "8082:8080"
+    restart: unless-stopped
+    build:
+      dockerfile: Dockerfile
+    depends_on:
+      - db-postgres
+    network_mode: "host"
+
