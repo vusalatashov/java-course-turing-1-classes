@@ -1,7 +1,5 @@
 package az.edu.turing.module03.lesson34.dto;
 
-import az.edu.turing.module03.lesson34.model.StudentEntity;
-
 import java.util.Objects;
 
 public class StudentDto {
@@ -68,16 +66,16 @@ public class StudentDto {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         StudentDto that = (StudentDto) o;
-        return id == that.id && age == that.age && Double.compare(gpa, that.gpa) == 0 && Objects.equals(name, that.name) && Objects.equals(surname, that.surname);
+        return age == that.age && Double.compare(gpa, that.gpa) == 0 && Objects.equals(name, that.name) && Objects.equals(surname, that.surname);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, age, gpa);
+        return Objects.hash(name, surname, age, gpa);
     }
 
     @Override
     public String toString() {
-        return "StudentDto : \n{id=%d, name='%s', surname='%s', age=%d, gpa=%s} \n".formatted(id, name, surname, age, gpa);
+        return "StudentDto : \n{name='%s', surname='%s', age=%d, gpa=%s} \n".formatted(name, surname, age, gpa);
     }
 }
