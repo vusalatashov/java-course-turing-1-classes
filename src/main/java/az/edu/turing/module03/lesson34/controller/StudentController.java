@@ -1,7 +1,6 @@
 package az.edu.turing.module03.lesson34.controller;
 
 import az.edu.turing.module03.lesson34.dto.StudentDto;
-import az.edu.turing.module03.lesson34.model.StudentEntity;
 import az.edu.turing.module03.lesson34.service.StudentService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.ServletException;
