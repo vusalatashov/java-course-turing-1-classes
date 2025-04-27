@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002_load_data_students_table
+      author: Vusal Atashov
+      changes:
+        - loadData:
+            file: liquibase/data/students.csv
+            tableName: students
+            separator: ;
+            encoding: UTF-8

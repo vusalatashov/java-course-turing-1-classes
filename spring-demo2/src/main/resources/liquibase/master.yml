@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: liquibase/changeset/create-tables.yml
+  - include:
+      file: liquibase/changeset/insert-course-data.yml
+  - include:
+      file: liquibase/changeset/insert-student-data.yml

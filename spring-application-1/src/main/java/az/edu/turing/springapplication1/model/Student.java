@@ -1,18 +1,20 @@
 package az.edu.turing.springapplication1.model;
 
+import jakarta.persistence.*;
 import lombok.*;
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Size;
-
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name = "students")
 public class Student {
+    @Id
+    @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
 
-    @NonNull
-    @Size(min = 3)
+    @Column(name = "name", nullable = false)
     private String name;
+
 }

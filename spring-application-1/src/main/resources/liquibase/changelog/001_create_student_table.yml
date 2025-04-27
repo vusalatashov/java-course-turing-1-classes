@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002_create_student_table
+      author: Vusal Atashov
+      changes:
+        - createTable:
+            tableName: students
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false

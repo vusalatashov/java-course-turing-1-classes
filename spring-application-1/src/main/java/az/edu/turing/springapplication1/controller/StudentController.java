@@ -3,10 +3,8 @@ package az.edu.turing.springapplication1.controller;
 import az.edu.turing.springapplication1.model.Student;
 import az.edu.turing.springapplication1.service.StudentService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -22,8 +20,8 @@ public class StudentController {
     }
 
     @PostMapping
-    public String createStudent(@RequestBody Student student) {
-        return studentService.createStudent(student);
+    public void createStudent(@RequestBody Student student) {
+         studentService.createStudent(student);
     }
 
     @GetMapping("/{id}")
@@ -36,10 +34,10 @@ public class StudentController {
     public String deleteStudent(@PathVariable long id) {
         return studentService.deleteStudent(id);
     }
-
+/*
     @PutMapping("/{id}")
     public String updateStudent(@PathVariable long id, @RequestBody Student student) {
         student.setId(id);
         return studentService.updateStudent(student);
-    }
+    }*/
 }
